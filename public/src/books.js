@@ -6,6 +6,7 @@ function findAuthorById(authors, id) {
 }
 
 function findBookById(books, id) {
+  // using find as to return as object for first matching one
     const book = books.find((book)=> book.id === id);
     return book;
 }

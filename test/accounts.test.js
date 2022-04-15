@@ -49,7 +49,7 @@ describe("Accounts Page", () => {
     it("should return all of the books taken out by an account with the author embedded", () => {
       const account = accounts[4];
 
-      const actual =    (account, books, authors);
+      const actual = getBooksPossessedByAccount(account, books, authors);
       expect(actual.length).to.equal(1);
 
       const book = actual[0];

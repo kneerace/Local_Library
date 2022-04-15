@@ -10,10 +10,12 @@ function sortAccountsByLastName(accounts) {
     first.name.last.toLocaleLowerCase() > second.name.last.toLocaleLowerCase() ? 1 : -1)
 }
 
+function getAcctID(account){
+  return account.id;
+}
 function getTotalNumberOfBorrows(account, books) {
-  // account is an object
-  // books is an array with all book objects
-  const acctID = account.id;
+  // using helper function to get accountID
+  const acctID = getAcctID(account)
   // variable to hold count, so should be updatable 
   let count = 0;
   // iterating through books object Array
@@ -27,10 +29,8 @@ function getTotalNumberOfBorrows(account, books) {
 }
 
 function getBooksPossessedByAccount(account, books, authors){
-  // account object, array of all books, array of all authors
-  
-  //placeholder for the accountID from the object account.
-  const acctID = account.id;
+  // utilizing helper function to get acctID
+  const acctID = getAcctID(account)
   //iterating througth books array, taking book object and comparing borrows.id === acctID and as well where borrows.returned is false
   const books_taken = [];
     books.forEach(book=>{
@@ -39,10 +39,9 @@ function getBooksPossessedByAccount(account, books, authors){
         books_taken.push(book);
       }
     })
-//     console.log(books_taken);
-  // iterating through books_taken array and finding the match for the book.authorID === author.id
   
-    books_taken.forEach(book=>{
+  // iterating through books_taken array and finding the match for the book.authorID === author.id
+  books_taken.forEach(book=>{
       let authDetails = authors.find(author => author.id === book.authorId);
       // object returned via find is then captured, and inserted into book_taken object
       book['author'] = authDetails;
